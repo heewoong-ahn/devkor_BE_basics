@@ -4,6 +4,9 @@ import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
+import { PostService } from './post/post.service';
+import { PostController } from './post/post.controller';
+import { PostModule } from './post/post.module';
 
 @Module({
   imports: [
@@ -19,8 +22,9 @@ import { ConfigModule } from '@nestjs/config';
       synchronize: true,
     }),
     UserModule,
+    PostModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, PostController],
+  providers: [AppService, PostService],
 })
 export class AppModule {}
